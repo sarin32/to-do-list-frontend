@@ -1,43 +1,34 @@
+import {Logo} from '@/components/logo';
+import {CreateTask} from '@/pages/create-task';
 import {DashboardRoute} from '@/routes/dashboard.route';
 import {Link} from 'react-router-dom';
+
+const routes = [
+  {title: 'All', path: 'all'},
+  {title: 'Pending', path: 'pending'},
+  {title: 'Completed', path: 'completed'},
+];
 
 export const DashboardLayout = () => {
   return (
     <div className="flex min-h-screen">
       {/* Sidebar/Navigation */}
-      <aside className="bg-primary text-primary-foreground w-64">
+      <aside className="bg-secondary text-primary-foreground w-64">
         <div className="py-4 px-6">
-          <h2 className="text-2xl font-bold mb-4">
-            <Link to={'/'}>ClearList</Link>
-          </h2>
-          <nav>
+          <Logo />
+
+          <nav className="mt-10">
             <ul>
-              <li className="mb-2">
-                <Link
-                  className="block text-secondary-foreground hover:text-accent"
-                  to={''}
-                >
-                  All
-                </Link>
-              </li>
-
-              <li className="mb-2">
-                <Link
-                  className="block text-secondary-foreground hover:text-accent"
-                  to={''}
-                >
-                  Pending
-                </Link>
-              </li>
-
-              <li className="mb-2">
-                <Link
-                  className="block text-secondary-foreground hover:text-accent"
-                  to={''}
-                >
-                  Completed
-                </Link>
-              </li>
+              {routes.map(route => (
+                <li className="mb-2">
+                  <Link
+                    className="block text-secondary-foreground hover:text-primary"
+                    to={route.path}
+                  >
+                    {route.title}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </nav>
         </div>
@@ -45,6 +36,7 @@ export const DashboardLayout = () => {
 
       {/* Main Content */}
       <main className="flex-1">
+        <CreateTask></CreateTask>
         <DashboardRoute />
       </main>
     </div>

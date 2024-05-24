@@ -1,3 +1,4 @@
+import {Logo} from '@/components/logo';
 import {ModeToggle} from '@/components/mode-toggle';
 import {HomeRoutes} from '@/routes/home.route';
 import {Link} from 'react-router-dom';
@@ -9,16 +10,7 @@ export function HomeLayout() {
       <header className="bg-accent text-secondary-foreground py-4">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
-              <img
-                src="/src/assets/images/logo.svg"
-                className="h-8"
-                alt="Logo"
-              />
-              <h1 className="text-2xl font-bold text-secondary-foreground">
-                ClearList
-              </h1>
-            </div>
+            <Logo />
 
             {/* Navigation Links */}
             <nav className="mt-2 sm:mt-0">
