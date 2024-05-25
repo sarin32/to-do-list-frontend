@@ -27,7 +27,7 @@ export class HttpService {
   }
 
   request<ResponseDataT>(
-    method: 'get' | 'post' | 'put' | 'delete',
+    method: 'get' | 'post' | 'put' | 'delete' | 'patch',
     url: string,
     data = null as unknown,
     customHeaders = {} as headers
@@ -87,6 +87,14 @@ export class HttpService {
     customHeaders = {} as headers
   ) {
     return this.request<ResponseDataT>('post', url, data, customHeaders);
+  }
+
+  patch<ResponseDataT>(
+    url: string,
+    data: unknown,
+    customHeaders = {} as headers
+  ) {
+    return this.request<ResponseDataT>('patch', url, data, customHeaders);
   }
 
   put<ResponseDataT>(

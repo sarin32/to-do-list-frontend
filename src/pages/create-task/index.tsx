@@ -24,10 +24,10 @@ const formSchema = z.object({
     .string()
     .trim()
     .min(1, {message: 'Task must be at least 1 characters.'})
-    .max(100, {message: 'Password can not be more than 100 characters.'}),
+    .max(300, {message: 'Password can not be more than 300 characters.'}),
 });
 
-export function CreateTask() {
+export function CreateTask({onCreate}:{onCreate?:()=>void}) {
   const [isLoading, setIsLoading] = useState(false);
   const {toast} = useToast();
 
@@ -52,6 +52,7 @@ export function CreateTask() {
       return;
     }
 
+    onCreate && onCreate()
     form.reset();
     toast({title: 'Task created successfully'});
   }
@@ -60,7 +61,7 @@ export function CreateTask() {
     <div className="max-w-screen-sm">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-          <div className="flex items-end">
+          <div className="flex items-end flex-wrap">
             <FormField
               control={form.control}
               name="title"

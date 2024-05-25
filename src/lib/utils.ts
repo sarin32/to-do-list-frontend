@@ -5,7 +5,7 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function formatDateToIST(date: Date | string) {
+export function formatDateToIST(date: Date) {
   // Convert the date to a formatted string in IST
   return date.toLocaleString('en-IN', {
     // timeZone: "Asia/Kolkata", // Indian Standard Time (IST)

@@ -1,5 +1,4 @@
 import {Logo} from '@/components/logo';
-import {CreateTask} from '@/pages/create-task';
 import {DashboardRoute} from '@/routes/dashboard.route';
 import {Link} from 'react-router-dom';
 
@@ -20,7 +19,7 @@ export const DashboardLayout = () => {
           <nav className="mt-10">
             <ul>
               {routes.map(route => (
-                <li className="mb-2">
+                <li className="mb-2" key={route.title}>
                   <Link
                     className="block text-secondary-foreground hover:text-primary"
                     to={route.path}
@@ -35,8 +34,7 @@ export const DashboardLayout = () => {
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1">
-        <CreateTask></CreateTask>
+      <main className="flex-1 m-5 m-sm-2">
         <DashboardRoute />
       </main>
     </div>
